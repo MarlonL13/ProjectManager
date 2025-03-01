@@ -1,24 +1,41 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { AlertCircle, AlertOctagon, AlertTriangle, Briefcase, ChevronDown, ChevronUp, Home, Layers3, LockIcon, LucideIcon, Search, Settings, ShieldAlert, User, Users, X } from "lucide-react";
+import {
+  AlertCircle,
+  AlertOctagon,
+  AlertTriangle,
+  Briefcase,
+  ChevronDown,
+  ChevronUp,
+  Home,
+  Layers3,
+  LockIcon,
+  LucideIcon,
+  Search,
+  Settings,
+  ShieldAlert,
+  User,
+  Users,
+  X,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import Link from "next/link";
 import { setIsSidebarOpen } from "@/state";
+import { useGetProjectsQuery } from "@/state/api";
 
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriorities, setShowPriorities] = useState(true);
 
+  const { data: projects } = useGetProjectsQuery();
   const dispatch = useAppDispatch();
   const isSideBarOpen = useAppSelector((state) => state.global.isSidebarOpen);
 
   return (
     <div
-      className={`fixed z-40 flex h-full flex-col justify-between overflow-y-auto bg-white shadow-xl transition-all duration-300 dark:bg-black 
-        ${isSideBarOpen ? "w-0 hidden" : "w-64"}`
-      }
+      className={`fixed z-40 flex h-full flex-col justify-between overflow-y-auto bg-white shadow-xl transition-all duration-300 dark:bg-black ${isSideBarOpen ? "hidden w-0" : "w-64"}`}
     >
       <div className="flex h-full w-full flex-col justify-start">
         {/* Sidebar Header */}
@@ -27,7 +44,10 @@ const Sidebar = () => {
             ML Projects
           </div>
           {isSideBarOpen ? null : (
-            <button className="py-3" onClick={()=> dispatch(setIsSidebarOpen(!isSideBarOpen))}>
+            <button
+              className="py-3"
+              onClick={() => dispatch(setIsSidebarOpen(!isSideBarOpen))}
+            >
               <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
             </button>
           )}
@@ -49,38 +69,71 @@ const Sidebar = () => {
         </div>
         {/* Sidebar links */}
         <nav className="z-10 w-full">
-          <SidebarLink href="/home" icon={Home} label="Home" />
+          <SidebarLink href="/" icon={Home} label="Home" />
           <SidebarLink href="/timeline" icon={Briefcase} label="Timeline" />
           <SidebarLink href="/search" icon={Search} label="Search" />
           <SidebarLink href="/settings" icon={Settings} label="Settings" />
           <SidebarLink href="/users" icon={User} label="Users" />
           <SidebarLink href="/teams" icon={Users} label="Teams" />
         </nav>
+
         {/* Project links */}
-        <button onClick={()=> setShowProjects((prev: boolean)=> !prev)} className="flex w-full items-center justify-between px-8 py-3 text-gray-500">
+        <button
+          onClick={() => setShowProjects((prev: boolean) => !prev)}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
           <span>Projects</span>
           {showProjects ? (
-            <ChevronUp className="h-5 w-5"/>
-          ):(
-            <ChevronDown className="h-5 w-5"/>
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
           )}
         </button>
+        {/*Project list */}
+        {showProjects &&
+          projects?.map((projects) => (
+            <SidebarLink
+              key={projects.id}
+              icon={Briefcase}
+              href={`/projects/${projects.id}`}
+              label={projects.name}
+            />
+          ))}
         {/* Priorities links */}
-        <button onClick={()=> setShowPriorities((prev: boolean)=> !prev)} className="flex w-full items-center justify-between px-8 py-3 text-gray-500">
+        <button
+          onClick={() => setShowPriorities((prev: boolean) => !prev)}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
           <span>Priorities</span>
           {showPriorities ? (
-            <ChevronUp className="h-5 w-5"/>
-          ):(
-            <ChevronDown className="h-5 w-5"/>
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
           )}
         </button>
         {showPriorities && (
           <>
-          <SidebarLink href="/priority/urgent" icon={AlertCircle} label="Urgent" />
-          <SidebarLink href="/priority/high" icon={ShieldAlert} label="High" />
-          <SidebarLink href="/priority/medium" icon={AlertTriangle} label="Medium" />
-          <SidebarLink href="/priority/low" icon={AlertOctagon} label="Low" />
-          <SidebarLink href="/priority/backlog" icon={Layers3} label="Backlog" />
+            <SidebarLink
+              href="/priority/urgent"
+              icon={AlertCircle}
+              label="Urgent"
+            />
+            <SidebarLink
+              href="/priority/high"
+              icon={ShieldAlert}
+              label="High"
+            />
+            <SidebarLink
+              href="/priority/medium"
+              icon={AlertTriangle}
+              label="Medium"
+            />
+            <SidebarLink href="/priority/low" icon={AlertOctagon} label="Low" />
+            <SidebarLink
+              href="/priority/backlog"
+              icon={Layers3}
+              label="Backlog"
+            />
           </>
         )}
       </div>
@@ -92,11 +145,7 @@ interface SidebarLinkProps {
   icon: LucideIcon;
   label: string;
 }
-const SidebarLink = ({
-  href,
-  icon: Icon,
-  label,
-}: SidebarLinkProps) => {
+const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href || (pathname === "/" && href === "/home");
 
