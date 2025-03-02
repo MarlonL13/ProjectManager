@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import { Clock, Filter, Grid3X3, List, Share2, Table } from "lucide-react";
-import React, { act, useState } from "react";
+// import React, { useState } from "react";
 
 type Props = {
   activeTab: string;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
-  const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
+  // const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
 
   return (
     <div className="px-4 xl:px-6">
