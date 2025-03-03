@@ -24,7 +24,7 @@ export default {
           400: "#60a5fa",
           500: "#3b82f6",
         },
-        "dark-bg": "#101241",
+        "dark-bg": "#121212",
         "dark-secondary": "#1d1f21",
         "dark-terciary": "#3b3d40",
         "blue-primary": "#0275ff",

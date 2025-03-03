@@ -42,7 +42,7 @@ export interface Attachment {
 
 export interface Task {
   id: number;
-  title: number;
+  title: string;
   description?: string;
   status?: Status;
   priority?: Priority;
