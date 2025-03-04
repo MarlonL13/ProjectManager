@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import ProjectHeader from "@/app/projects/ProjectHeader";
+import ModalNewTask from "@/components/ModalNewTask";
 import Board from "../BoardView";
 import List from "../ListView";
 import Timeline from "../TimelineView";
@@ -15,13 +16,25 @@ const Project = () => {
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
   return (
-    <div> 
-      {/*Modal new task*/}
+    <div>
+      <ModalNewTask
+        isOpen={isModalNewTaskOpen}
+        onClose={() => setIsModalNewTaskOpen(false)}
+        id={id}
+      />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-      { activeTab === "Board" && <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}  /> }
-      { activeTab === "List" && <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}  /> }
-      { activeTab === "Timeline" && <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}  /> }
-      { activeTab === "Table" && <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}  /> }
+      {activeTab === "Board" && (
+        <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+      )}
+      {activeTab === "List" && (
+        <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+      )}
+      {activeTab === "Timeline" && (
+        <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+      )}
+      {activeTab === "Table" && (
+        <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+      )}
     </div>
   );
 };

@@ -26,8 +26,10 @@ const columns: GridColDef[] = [
     headerName: "Status",
     width: 130,
     renderCell: (params) => (
-        <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">{params.value}</span>
-    )
+      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+        {params.value}
+      </span>
+    ),
   },
   {
     field: "priority",
@@ -77,9 +79,25 @@ const Table = ({ id, setIsModalNewTaskOpen }: Props) => {
   return (
     <div className="h-[540px] w-full px-4 pb-8 xl:px-6">
       <div className="pt-5">
-        <Header name="table" isSmallText />
+        <Header
+          name="table"
+          isSmallText
+          buttonComponent={
+            <button
+              className="flex items-center rounded bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+              onClick={() => setIsModalNewTaskOpen(true)}
+            >
+              Add task
+            </button>
+          }
+        />
       </div>
-      <DataGrid rows={tasks || []} columns={columns} className={dataGridClassNames} sx={dataGridSxStyles(isDarkMode)}/>
+      <DataGrid
+        rows={tasks || []}
+        columns={columns}
+        className={dataGridClassNames}
+        sx={dataGridSxStyles(isDarkMode)}
+      />
     </div>
   );
 };
