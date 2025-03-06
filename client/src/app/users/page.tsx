@@ -31,7 +31,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const page = () => {
+const Users = () => {
   const { data: users, isError, isLoading } = useGetUsersQuery();
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
@@ -48,4 +48,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Users;
