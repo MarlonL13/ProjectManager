@@ -54,7 +54,7 @@ const Sidebar = () => {
         </div>
         {/* Sidebar Body */}
         <div className="flex items-center gap-5 border-y-[1.5px] px-8 py-4 dark:border-gray-700">
-          <Image src="/logo.png" alt="Logo" width={50} height={45} style={{ width: "auto" }} priority/>
+          <Image src="https://pm-3-images.s3.us-east-1.amazonaws.com/logo.png" alt="Logo" width={50} height={45} style={{ width: "auto" }} priority/>
           <div>
             <h3 className="text-md font-bold tracking-wide dark:text-gray-200">
               ML TEAM
