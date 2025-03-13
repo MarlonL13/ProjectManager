@@ -81,7 +81,7 @@ function ModalNewTask({ isOpen, onClose, id = null }: Props) {
             className={selectStyles}
             value={status}
             onChange={(e) =>
-              setStatus(Status[e.target.value as keyof typeof Status])
+              setStatus(e.target.value as Status) 
             }
           >
             <option value="">Select Status</option>
