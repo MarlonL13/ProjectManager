@@ -102,7 +102,7 @@ const TaskColumn = ({
             </button>
             <button
               className="flex h-6 w-6 items-center justify-center rounded bg-gray-200 dark:bg-dark-terciary dark:text-white"
-              onClick={() => setIsModalNewTaskOpen}
+              onClick={() => setIsModalNewTaskOpen(true)}
             >
               <Plus size={26} />
             </button>
