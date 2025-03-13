@@ -80,12 +80,9 @@ export const api = createApi({
     prepareHeaders: async (headers) => {
       const session = await fetchAuthSession();
       const { accessToken } = session.tokens ?? {};
-      console.log("accessToken", accessToken);
-      console.log("session", session);   
       if (accessToken) {
         headers.set("Authorization", `Bearer ${accessToken}`);
       }
-      console.log("headers", headers);
       return headers;
     },
   }),
@@ -93,13 +90,15 @@ export const api = createApi({
   tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (build) => ({
     getAuthUser: build.query({
-      queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
+      queryFn: async (_, _queryApi, _extraoptions, fetchWithBQ) => {
         try {
           const user = await getCurrentUser();
           const session = await fetchAuthSession();
           if (!session) throw new Error("No session found");
           const { userSub } = session;
-          const userDetailsResponse = await fetchWithBQ(`/users/${userSub}`);
+          const { accessToken } = session.tokens ?? {};
+
+          const userDetailsResponse = await fetchWithBQ(`users/${userSub}`);
           const userDetails = userDetailsResponse.data as User;
 
           return { data: { user, userSub, userDetails } };
