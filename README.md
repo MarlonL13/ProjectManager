@@ -9,16 +9,16 @@ A comprehensive full-stack project management application built with Next.js, Ex
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-  - [Client Setup](#client-setup)
-  - [Server Setup](#server-setup)
+    - [Client Setup](#client-setup)
+    - [Server Setup](#server-setup)
 - [Environment Variables](#environment-variables)
 - [Database Setup](#database-setup)
 - [Deployment](#deployment)
-  - [AWS EC2 & PM2 (Backend)](#aws-ec2--pm2-backend)
-  - [AWS Amplify (Frontend)](#aws-amplify-frontend)
-  - [AWS RDS (Database)](#aws-rds-database)
-  - [AWS Cognito (Authentication)](#aws-cognito-authentication)
-  - [AWS S3 (File Storage)](#aws-s3-file-storage)
+    - [AWS EC2 & PM2 (Backend)](#aws-ec2--pm2-backend)
+    - [AWS Amplify (Frontend)](#aws-amplify-frontend)
+    - [AWS RDS (Database)](#aws-rds-database)
+    - [AWS Cognito (Authentication)](#aws-cognito-authentication)
+    - [AWS S3 (File Storage)](#aws-s3-file-storage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -26,18 +26,18 @@ A comprehensive full-stack project management application built with Next.js, Ex
 
 - **Authentication** - User registration and login with AWS Cognito
 - **Project Management**
-  - Create and manage projects
-  - Assign team members to projects
+    - Create and manage projects
+    - Assign team members to projects
 - **Task Management**
-  - Create tasks
-  - Assign tasks to users
-  - Set priorities (Urgent, High, Medium, Low, Backlog)
-  - Update task status (To Do, Work In Progress, Under Review, Completed)
+    - Create tasks
+    - Assign tasks to users
+    - Set priorities (Urgent, High, Medium, Low, Backlog)
+    - Update task status (To Do, Work In Progress, Under Review, Completed)
 - **Multiple Views**
-  - Board View (Kanban)
-  - List View
-  - Timeline View (Gantt chart)
-  - Table View
+    - Board View (Kanban)
+    - List View
+    - Timeline View (Gantt chart)
+    - Table View
 - **Priority Filtering** - Filter tasks by priority level
 - **Team Management** - Create and manage teams
 - **User Management** - View and manage users
@@ -86,15 +86,15 @@ project/
 │   ├── .env.example      # Example environment variables
 │   └── .env.local        # Local environment variables
 └── server/               # Backend Express application
-    ├── prisma/           # Prisma schema and migrations
-    │   ├── schema.prisma # Database schema
-    │   └── seed.ts       # Seed data script
-    ├── src/              # Source code
-    │   ├── controllers/  # API controllers
-    │   ├── routes/       # API routes
-    │   └── index.ts      # Main entry point
-    ├── .env              # Environment variables
-    └── .env.example      # Example environment variables
+        ├── prisma/           # Prisma schema and migrations
+        │   ├── schema.prisma # Database schema
+        │   └── seed.ts       # Seed data script
+        ├── src/              # Source code
+        │   ├── controllers/  # API controllers
+        │   ├── routes/       # API routes
+        │   └── index.ts      # Main entry point
+        ├── .env              # Environment variables
+        └── .env.example      # Example environment variables
 ```
 
 ## 📋 Prerequisites
@@ -197,21 +197,21 @@ pm2 save
 ```sh
 version: 1
 frontend:
-  phases:
-    preBuild:
-      commands:
-        - cd client
-        - npm ci
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: client/.next
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - client/node_modules/**/*
+    phases:
+        preBuild:
+            commands:
+                - cd client
+                - npm ci
+        build:
+            commands:
+                - npm run build
+    artifacts:
+        baseDirectory: client/.next
+        files:
+            - '**/*'
+    cache:
+        paths:
+            - client/node_modules/**/*
 ```
 3. Add the environment variables in the Amplify Console
 4. Deploy the application
@@ -239,32 +239,32 @@ frontend:
 I welcome contributions to improve this project! To contribute, please follow these steps:
 
 1. **Fork the Repository**  
-   Click the **Fork** button at the top right of the repository to create a copy under your GitHub account.
+     Click the **Fork** button at the top right of the repository to create a copy under your GitHub account.
 
 2. **Clone Your Fork**  
-   ```sh
-   git clone https://github.com/your-username/project.git
-   cd project
-   ```
+     ```sh
+     git clone https://github.com/your-username/project.git
+     cd project
+     ```
 3. **Create a New Branch**  
-   ```sh
-   git checkout -b feature/your-feature-name
-   ```
+     ```sh
+     git checkout -b feature/your-feature-name
+     ```
 4. **Make Your Changes**  
 Modify the code, fix bugs, or add new features.
 
 5. **Commit Your Changes**  
-   ```sh
-   git commit -m 'Add some feature'
-   ```
+     ```sh
+     git commit -m 'Add some feature'
+     ```
 6. **Push to Your Branch**  
-   ```sh
-   git push origin feature/your-feature-name
-  ```
+     ```sh
+     git push origin feature/your-feature-name
+     ```
 7. **Open a Pull Request (PR)**  
-   - Go to the repository on GitHub.
-   - Click **"New Pull Request"**.
-   - Select your fork and branch, then submit the PR for review.
+     - Go to the repository on GitHub.
+     - Click **"New Pull Request"**.
+     - Select your fork and branch, then submit the PR for review.
 
 ## 📄 License
 
