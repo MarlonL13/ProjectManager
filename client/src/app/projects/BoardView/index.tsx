@@ -173,6 +173,7 @@ const Task = ({ task }: TaskProps) => {
           alt={task.attachments[0].fileName}
           width={400}
           height={200}
+          loading="lazy"
           className="h-auto w-full rounded-t-md"
         />
       )}
@@ -221,6 +222,7 @@ const Task = ({ task }: TaskProps) => {
                 alt={task.assignee.username}
                 width={30}
                 height={30}
+                loading="lazy"
                 className="h-8 rounded-full border-2 border-white object-cover dark:border-dark-secondary"
               />
             )}
@@ -231,6 +233,7 @@ const Task = ({ task }: TaskProps) => {
                 alt={task.author.username}
                 width={30}
                 height={30}
+                loading="lazy"
                 className="h-8 rounded-full border-2 border-white object-cover dark:border-dark-secondary"
               />
             )}

@@ -19,6 +19,7 @@ const TaskCard = ({task}: Props) => {
                         alt={task.attachments[0].fileName}
                         width={400}
                         height={200}
+                        loading="lazy"
                         className="rounded-md"/>
                     )}
                 </div>

@@ -47,9 +47,9 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed z-40 flex h-full flex-col justify-between overflow-y-auto bg-white shadow-xl transition-all duration-300 dark:bg-black ${isSideBarOpen ? "hidden w-0" : "w-64"}`}
+      className={`fixed z-40 flex h-full flex-col overflow-y-auto bg-white shadow-xl transition-all duration-300 dark:bg-black ${isSideBarOpen ? "hidden w-0" : "w-64"}`}
     >
-      <div className="flex h-full w-full flex-col justify-start">
+      <div className="flex h-full w-full flex-col justify-between">
         {/* Sidebar Header */}
         <div className="z-50 flex min-h-14 items-center justify-between bg-white px-6 pt-3 dark:bg-black">
           <div className="text-xl font-bold text-gray-800 dark:text-white">
@@ -57,10 +57,15 @@ const Sidebar = () => {
           </div>
           {isSideBarOpen ? null : (
             <button
-              className="py-3"
+              className="p-3"
               onClick={() => dispatch(setIsSidebarOpen(!isSideBarOpen))}
+              aria-label="Close sidebar"
+              title="Close sidebar"
+              type="button"
             >
-              <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
+              <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" 
+               aria-hidden="true"
+              />
             </button>
           )}
         </div>
@@ -71,6 +76,7 @@ const Sidebar = () => {
             alt="Logo"
             width={50}
             height={45}
+            loading="lazy"
             style={{ width: "auto" }}
             priority
           />
@@ -86,6 +92,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
+        <div className="flex-grow overflow-y-auto">
         {/* Sidebar links */}
         <nav className="z-10 w-full">
           <SidebarLink href="/" icon={Home} label="Home" />
@@ -155,8 +162,10 @@ const Sidebar = () => {
             />
           </>
         )}
+        </div>
+        {/* Sidebar Footer */}
       </div>
-      <div className="mt-32 mb-2 flex w-full flex-col items-center gap-4 bg-white px-8 py-4 dark:bg-black md:hidden">
+      <div className="mt-auto flex w-full flex-col items-center bg-white px-8 py-4 dark:bg-black md:hidden">
         <div className="flex w-full items-center">
           <div className="align-center flex h-9 w-9 justify-center">
             {!!currentUserDetails?.profilePictureUrl ? (
@@ -165,6 +174,7 @@ const Sidebar = () => {
                 alt={currentUserDetails?.username || "User profile picture"}
                 width={100}
                 height={50}
+                loading="lazy"
                 className="h-full rounded-full object-cover"
               />
             ) : (

@@ -51,11 +51,14 @@ const Navbar = () => {
               ? `rounded p-2 dark:hover:bg-gray-700`
               : `rounded p-2 hover:bg-gray-100`
           }
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          role="switch"
+          aria-checked={isDarkMode}
         >
           {isDarkMode ? (
-            <Sun className="size-6 cursor-pointer dark:text-white" />
+            <Sun className="size-6 cursor-pointer dark:text-white" aria-hidden="true" />
           ) : (
-            <Moon className="size-6 cursor-pointer dark:text-white" />
+            <Moon className="size-6 cursor-pointer dark:text-white" aria-hidden="true" />
           )}
         </button>
         <Link
@@ -65,8 +68,10 @@ const Navbar = () => {
               ? `h-min w-min rounded p-2 dark:hover:bg-gray-700`
               : `h-min w-min rounded p-2 hover:bg-gray-100`
           }
+          aria-label="Settings"
+          role="link"
         >
-          <Settings className="size-6 cursor-pointer dark:text-white" />
+          <Settings className="size-6 cursor-pointer dark:text-white" aria-hidden="true" />
         </Link>
         <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1em] bg-gray-200 md:inline-block"></div>
         <div className="hidden items-center justify-between md:flex">
@@ -77,6 +82,7 @@ const Navbar = () => {
                 alt={currentUserDetails?.username || "User profile picture"}
                 width={100}
                 height={50}
+                loading="lazy"
                 className="h-full rounded-full object-cover"
               />
             ) : (
@@ -86,7 +92,7 @@ const Navbar = () => {
           <span className="mx-3 text-gray-800 dark:text-white">
             {currentUserDetails?.username}
           </span>
-          <button className="hidden rounded bg-blue-400 px-4 py-2 text-sm font-bold text-white hover:bg-blue-500 md:block" onClick={handleSignOut}>Sign Out</button>
+          <button className="hidden rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-600 md:block" onClick={handleSignOut}>Sign Out</button>
         </div>
       </div>
     </div>

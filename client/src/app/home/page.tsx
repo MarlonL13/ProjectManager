@@ -102,9 +102,9 @@ const HomePage = () => {
       <Header name="Project Management Dashboard" />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary">
-          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+          <h2 className="mb-4 text-lg font-semibold dark:text-white">
             Task Priority Distribution
-          </h3>
+          </h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={taskDistribution}>
               <CartesianGrid
@@ -125,9 +125,9 @@ const HomePage = () => {
           </ResponsiveContainer>
         </div>
         <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary">
-          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+          <h2 className="mb-4 text-lg font-semibold dark:text-white">
             Project Status
-          </h3>
+          </h2>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart data={taskDistribution}>
               <Pie
@@ -149,9 +149,9 @@ const HomePage = () => {
           </ResponsiveContainer>
         </div>
         <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary md:col-span-2">
-          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+          <h2 className="mb-4 text-lg font-semibold dark:text-white">
             Your Tasks
-          </h3>
+          </h2>
           <div style={{ height: 300, width: "100%" }}>
             <DataGrid
               rows={tasks}
