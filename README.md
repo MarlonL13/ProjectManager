@@ -2,6 +2,8 @@
 
 A comprehensive full-stack project management application built with Next.js, Express, and AWS services. This application allows teams to manage projects, tasks, and collaborate effectively with features like kanban boards, timelines, and task prioritization.
 
+![Dashboard Screenshot](https://i.imgur.com/WT4Zg1Y.png)
+
 ## 📋 Table of Contents
 
 - [Features](#features)
@@ -38,11 +40,15 @@ A comprehensive full-stack project management application built with Next.js, Ex
     - List View
     - Timeline View (Gantt chart)
     - Table View
+      
+  ![Dashboard Screenshot](https://i.imgur.com/7KfoAXu.png)
 - **Priority Filtering** - Filter tasks by priority level
 - **Team Management** - Create and manage teams
 - **User Management** - View and manage users
 - **Dashboard** - Visual analytics and statistics
 - **Dark Mode** - Toggle between light and dark themes
+  
+  ![Dashboard Screenshot](https://i.imgur.com/DMWuYC6.png)
 - **Responsive Design** - Works on desktop and mobile devices
 
 ## 🛠️ Tech Stack
